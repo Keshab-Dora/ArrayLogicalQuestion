@@ -1,23 +1,25 @@
-import java.io.FileNotFoundException;
-
-/**
- * 
- * 
- * @author Keshab Dora
- *
- */
-public class Solution {
-
-	public static void main(String[] args) throws FileNotFoundException {
-		int x = 120;
-		long sum = 0;
-		while (x != 0) {
-			sum = sum * 10 + x % 10;
-			x = x / 10;
-		}
-		if (Integer.MAX_VALUE < sum || Integer.MIN_VALUE > sum)
-			System.out.println(0);
-		System.out.println((int) sum);
-	}
-
+class Solution {
+    public int thirdMax(int[] nums) {
+        
+        		Integer max = null, second_max = null, third_max = null;
+		for (Integer num:nums) {
+			if(num.equals(max) || num.equals(second_max) || num.equals(third_max)){
+                continue;
+            }
+            if (max==null || max < num) {
+				third_max = second_max;
+				second_max = max;
+				max = num;
+			} else if (second_max==null || second_max < num) {
+				third_max = second_max;
+				second_max = num;
+			} else if (third_max==null || third_max < num) {
+				third_max = num;
+			}
+		} // end for loop
+        if(third_max==null){
+            return max;
+        }
+        return third_max;
+    }
 }
