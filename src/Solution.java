@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 
 /**
- * Valid Phone Number Example
+ * 
  * 
  * @author Keshab Dora
  *
